@@ -1,0 +1,25 @@
+input[type=number] {
+    width: 3em;
+    margin-right: 10px;
+}
+
+input[type=checkbox] {
+    margin-right: 20px;
+}
+
+.chance-paths {
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: solid 1px;
+    border-collapse: collapse;
+}
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+#output-section {
+    margin-top: 20px;
+}

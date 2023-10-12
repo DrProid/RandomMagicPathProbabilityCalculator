@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Magic Path Probability Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Random Magic Path Probability Calculator</h1>
+    <section>
+        <h2>BASE MAGIC PATHS</h2>
+        <form id="base-paths">
+
+            <label for="base-fire">Fire</label>
+            <input type="number" name="base-fire">
+
+            <label for="base-air">Air</label>
+            <input type="number" name="base-air">
+
+            <label for="base-water">Water</label>
+            <input type="number" name="base-water">
+
+            <label for="base-earth">Earth</label>
+            <input type="number" name="base-earth">
+
+            <label for="base-astral">Astral</label>
+            <input type="number" name="base-astral">
+
+            <label for="base-nature">Nature</label>
+            <input type="number" name="base-nature">
+
+            <label for="base-death">Death</label>
+            <input type="number" name="base-death">
+
+            <label for="base-blood">Blood</label>
+            <input type="number" name="base-blood">
+
+            <label for="base-divine">Divine</label>
+            <input type="number" name="base-divine">
+
+        </form>
+
+        <h2>CHANCE PATHS</h2>
+        <form class="chance-paths">
+
+            <label for="chance-percent">Chance</label>
+            <input type="number" name="chance-percent" placeholder="100">
+
+            <label for="chance-level">Levels</label>
+            <input type="number" name="chance-level" placeholder="1">
+
+            <br>
+
+            <label for="chance-fire">Fire</label>
+            <input type="checkbox" name="chance-fire">
+
+            <label for="chance-air">Air</label>
+            <input type="checkbox" name="chance-air">
+
+            <label for="chance-water">Water</label>
+            <input type="checkbox" name="chance-water">
+
+            <label for="chance-earth">Earth</label>
+            <input type="checkbox" name="chance-earth">
+
+            <label for="chance-astral">Astral</label>
+            <input type="checkbox" name="chance-astral">
+
+            <label for="chance-nature">Nature</label>
+            <input type="checkbox" name="chance-nature">
+
+            <label for="chance-death">Death</label>
+            <input type="checkbox" name="chance-death">
+
+            <label for="chance-blood">Blood</label>
+            <input type="checkbox" name="chance-blood">
+
+            <label for="chance-divine">Divine</label>
+            <input type="checkbox" name="chance-divine">
+        </form>
+        <button id="add-chance">+</button>
+        <button id="remove-chance" style="display: none;">-</button>
+    </section>
+
+    <section id="output-section">
+        <button id="calc-chance">Calculate</button>
+        <button id="test">test</button>
+        <table id="output-table">
+            <th>Fire</th>
+            <th>Air</th>
+            <th>Water</th>
+            <th>Earth</th>
+            <th>Astral</th>
+            <th>Nature</th>
+            <th>Death</th>
+            <th>Blood</th>
+            <th>Divine</th>
+            <th>Chance</th>
+            <th>Link</th>
+        </table>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
