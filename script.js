@@ -82,7 +82,7 @@ function calculateChanceTable() {
     newPaths = removeDuplicates(newPaths);
     // console.log(newPaths);
 
-    for(const roll of newPaths){
+    for (const roll of newPaths) {
         // console.log(roll);
         addRowToTable(roll);
     }
@@ -217,20 +217,49 @@ function clearTable() {
     }
 }
 
-function addRowToTable(pathsObj) {
-    const outputTable = document.querySelector('#output-table');
+function makeMap(keysArray, valuesArray) {
+    console.assert(keysArray.length === valuesArray.length, "makeMap() received mismatched arrays");
+    return new Map(keysArray.map((key, index) => [key, valuesArray[index]]));
+}
 
+function addRowToTable(pathsObj) {
+    //add a row
+    const outputTable = document.querySelector('#output-table');
     const newRow = outputTable.insertRow();
-    const numCols = outputTable.querySelectorAll('th');
-    console.log(pathsObj);
-    // console.assert(pathsObj.paths.length==numCols.length, "Adding too many values to table in addRowToTable() function");
-    for (let col of numCols) {
+
+    //get all the columns
+    const columns = outputTable.querySelectorAll('th');
+
+    for (let col of columns) {
         const newCell = newRow.insertCell();
-        if(col.textContent != 'Link'){
-            newCell.textContent = pathsObj.paths[col.textContent.toLowerCase()] ?? pathsObj.pathChance * 100;
+        if (col.textContent != 'Link') {
+            //for every column except 'Link' put in the magic path level. Except if its undefined, then it must be the 'chance' column so put that in instead.
+            newCell.textContent = pathsObj.paths[col.textContent.toLowerCase()] ?? (pathsObj.pathChance * 100).toFixed(2);
+        } else {
+            
+            let pathLetters = makeMap([...'fawesndbh'], ['fire', 'air', 'water', 'earth', 'astral', 'nature', 'death', 'blood', 'divine']);//map the abbreviation letter to the name of the magic path
+            let pathString = "";
+            for (const [letter, pathName] of pathLetters) {
+                pathString += `${letter}[${pathsObj.paths[pathName] < 9 ? (pathsObj.paths[pathName] + 1 + '-9') : 0}]|`;
+            }
+            pathString = pathString.slice(0, -1);//delete last '|' character
+
+            let linkString = "https://larzm42.github.io/dom5inspector/?page=spell&nation=";
+            linkString += '<NATION>'; //add nation
+            linkString += "&showids=1&showkeys=1&propkeyspell=mpath&propnotspell=1&propvalspell=";
+            linkString += pathString; //add paths
+            linkString += "&propkeyitem=mpath&propnotitem=1&propvalitem=";
+            linkString += pathString; //add paths
+
+            // Create an anchor element
+            const link = document.createElement('a');
+            link.href = linkString;
+            link.target = '_blank';
+            link.textContent = 'Spells/Items';
+
+            newCell.appendChild(link); 
         }
-        // newCell.innerHTML = Math.round(Math.random() * 10);
     }
 }
 
-document.getElementById('test').addEventListener('click', gatherValues);
+// document.getElementById('test').addEventListener('click', gatherValues);
