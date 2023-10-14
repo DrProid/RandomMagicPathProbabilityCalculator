@@ -245,7 +245,7 @@ function addRowToTable(pathsObj) {
             pathString = pathString.slice(0, -1);//delete last '|' character
 
             let linkString = "https://larzm42.github.io/dom5inspector/?page=spell&nation=";
-            linkString += '<NATION>'; //add nation
+            linkString += document.getElementById("nation").selectedIndex;; //add nation
             linkString += "&showids=1&showkeys=1&propkeyspell=mpath&propnotspell=1&propvalspell=";
             linkString += pathString; //add paths
             linkString += "&propkeyitem=mpath&propnotitem=1&propvalitem=";
@@ -262,4 +262,6 @@ function addRowToTable(pathsObj) {
     }
 }
 
-// document.getElementById('test').addEventListener('click', gatherValues);
+
+
+// document.getElementById('test').addEventListener('click', getSelectedNation);
